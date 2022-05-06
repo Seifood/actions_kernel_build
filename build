@@ -11,7 +11,7 @@ cd "$WORK"
 [[ ! -d binutils-32 ]] && git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android11-release binutils-32
 
 # Clone kernel source
-[[ ! -d kernel-msm ]] && git clone --depth=1 https://github.com/thecatvoid/android_kernel_motorola_guamp kernel-msm
+[[ ! -d kernel-msm ]] && git clone --depth=1 https://github.com/Seifood/Xiaomi_kernel_zeus kernel-msm
 
 # Set toolchain path
 PATH="$WORK/clang/bin:$WORK/binutils/bin:$WORK/binutils-32/bin:/bin"
@@ -33,7 +33,7 @@ CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 }
 
 # Make defconfig
-make_fun vendor/guamp_defconfig
+make_fun vendor/zeus-qgki_defconfig
 
 # Make kernel
 make_fun -j$(nproc --all)
@@ -43,7 +43,7 @@ make_fun -j$(nproc --all)
 cd $WORK
 [[ ! -d ANY ]] && git clone --depth=1 https://github.com/thecatvoid/AnyKernel3.git ANY
 cd ANY ; rm -rf *Image* *.zip
-cp $KERNEL_SRC/out/arch/arm64/boot/Image.gz-dtb ./
+cp $KERNEL_SRC/out/arch/arm64/boot/Image.gz ./
 date=$(date "+%Y%m%d%I%M%S")
 zip -r9 $date.zip * -x .git README.md *placeholder
 curl -T $date.zip temp.sh
