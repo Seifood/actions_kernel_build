@@ -11,7 +11,7 @@ cd "$WORK"
 [[ ! -d binutils-32 ]] && git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android11-release binutils-32
 
 # Clone kernel source
-[[ ! -d kernel-msm ]] && git clone --depth=1 https://github.com/Seifood/android_kernel_xiaomi_sm8450 kernel-msm
+[[ ! -d kernel-msm ]] && git clone --depth=1 https://github.com/Seifood/Xiaomi_kernel_zeus -b patch-1 kernel-msm
 
 # Set toolchain path
 PATH="$WORK/clang/bin:$WORK/binutils/bin:$WORK/binutils-32/bin:/bin"
@@ -33,10 +33,10 @@ CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 }
 
 # Make defconfig
-make_fun vendor/zeus-qgki_defconfig
+make_fun vendor/zeus_defconfig
 
 # Make kernel
-make_fun -j$(nproc --all)
+make_fun -j1(nproc --all)
 
 
 # Upload built kernel
