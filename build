@@ -36,7 +36,7 @@ CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 make_fun vendor/zeus_defconfig
 
 # Make kernel
-make_fun -j1(nproc --all)
+make_fun -j1
 
 
 # Upload built kernel
