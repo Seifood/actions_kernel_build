@@ -33,7 +33,7 @@ CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 }
 
 # Make defconfig
-make_fun vendor/zeus-qgki_defconfig
+make_fun vendor/zeus_defconfig
 
 # Make kernel
 make_fun -j1
